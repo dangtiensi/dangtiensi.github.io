@@ -3,7 +3,7 @@
 #
 
 # Name of your site (displayed in the header)
-name: Đặng Tiến Sĩ - Blog
+name: Blog cá nhân - Đặng Tiến Sĩ
 
 # Short bio or description (displayed in the header)
 description: Đặng Tiến Sĩ - FullStack
@@ -18,17 +18,17 @@ avatar: https://raw.githubusercontent.com/barryclark/jekyll-now/master/images/je
 # Includes an icon in the footer for each username you enter
 footer-links:
   dribbble:
-  email:
-  facebook:
+  email: dangtiensi.vn@gmail.com
+  facebook: file.json
   flickr:
-  github: barryclark/jekyll-now
-  instagram:
-  linkedin:
-  pinterest:
+  github: dangtiensi
+  instagram: dangtiensi
+  linkedin: dangtiensi
+  pinterest: dangtiensi
   rss: # just type anything here for a working RSS icon
   twitter: jekyllrb
   stackoverflow: # your stackoverflow profile, e.g. "users/50476/bart-kiers"
-  youtube: # channel/<your_long_string> or user/<user-name>
+  youtube: dangtiensi
   googleplus: # anything in your profile username that comes after plus.google.com/
 
 
