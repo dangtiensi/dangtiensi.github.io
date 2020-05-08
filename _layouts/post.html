@@ -6,12 +6,10 @@ layout: compress
 <html lang="{{ page.lang | default: site.lang | default: "en" }}">
 {% include header.html %}
 <body>
-
   {% include navbar.html %}
   <div class="wrapper post">
     <main class="page-content" aria-label="Content">
       <article itemscope itemtype="https://schema.org/BlogPosting">
-
         <header class="header">
           {% if page.tags and page.tags != empty %}
           <div class="tags">
@@ -42,7 +40,6 @@ layout: compress
           </div>
           {% endif %}
         </header>
-
         <div class="page-content" itemprop="articleBody">
           {% include anchor_headings.html html=content anchorClass="anchor-head" beforeHeading=true h_min=1 h_max=4 %}
           {% if page.tweet %}
@@ -55,7 +52,6 @@ layout: compress
       {% if page.comments %}
         {% include comments.html%}
       {% endif %}
-
     </main>
     {% if page.modified %}
       <small class="post-updated-at">updated_at {{page.modified | date: "%d-%m-%Y"}}</small>
@@ -64,8 +60,6 @@ layout: compress
       {% include navigation.html %}
     {% endif %}
   </div>
-
   {% include footer.html %}
-
 </body>
 </html>
