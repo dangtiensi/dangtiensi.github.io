@@ -1,26 +1,24 @@
 # Site settings
-title: Klise Theme
+title: Sĩ Blog
 description: >-
-  He's writing in Bahasa about web technology and experience as a journal 
-  for documentation things that he learned, meet him <a href="https://github.com/piharpi" target="_blank" rel="noopener">@github</a>.
+  Đây là Blog cá nhân của Sĩ nhé, viết vì đam mê thui :))).
 lang: en-US
-timezone: Asia/Jakarta
+timezone: Asia/Ho_Chi_Minh
 image: assets/img/ogp.png # This image used for Open Graph more info https://ogp.me/
 repo: https://github.com/piharpi/mahendrata.now.sh
 mode: dark # default theme "dark" | "light"
 
 # Profile settings
 author:
-  name: Klisé Theme
+  name: Đặng Tiến Sĩ
   bio: >-
-    The minimalist Jekyll theme, light and dark mode support, for running a personal site and blog, 
-    meet Klisé theme at <a href="https://github.com/piharpi/jekyll-klise" target="_blank" rel="noopener">@github</a>.
-  username: username
-  email: your-email@email.com
+    Là một thằng ăn không ngồi rồi viết Blog xàm xí đú cho anh em đọc chơi côi có trầm trồ hay không thôi :D
+  username: dangtiensi
+  email: dangtiensi.vn@gmail.com
   avatar: /assets/img/avatar.jpg
 
 # Url settings
-url: "https://klise.now.sh"
+url: "https://siblog.net"
 baseurl:
 permalink: /:title/
 google_analytics:
