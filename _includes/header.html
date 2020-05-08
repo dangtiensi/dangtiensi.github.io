@@ -9,40 +9,22 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="#fff" />
   <meta name="apple-mobile-web-app-title" content="{{ site.title }}" />
   <title>
-    {% if page.title %}{{ page.title | escape }} - {{ site.title }}{% else %}{{
-    site.title | escape }}{% endif %}
+    {% if page.title %}{{ page.title | escape }} - {{ site.title }}{% else %}{{ site.title | escape }}{% endif %}
   </title>
-  <link
-    rel="alternate"
-    href="{{
-      page.url | remove: 'index.html' | remove: '.html' | absolute_url
-    }}"
-    hreflang="{{ site.lang }}"
-  />
-  <link
-    rel="canonical"
-    href="{{
-      page.url  | remove: 'index.html' | remove: '.html' | absolute_url
-    }}"
-  />
+  <link rel="alternate" href="{{ page.url | remove: 'index.html' | remove: '.html' | absolute_url }}" hreflang="{{ site.lang }}" />
+  <link rel="canonical" href="{{ page.url  | remove: 'index.html' | remove: '.html' | absolute_url }}" />
   {% if paginator.previous_page %}
-  <link
-    rel="prev"
-    href="{{
+  <link rel="prev" href="{{
       paginator.previous_page_path
         | remove: 'index.html'
         | remove: '.html'
-    }}"
-  />
+    }}"/>
   {% endif %} {% if paginator.next_page %}
-  <link
-    rel="next"
-    href="{{
+  <link rel="next" href="{{
       paginator.next_page_path
         | remove: 'index.html'
         | remove: '.html'
-    }}"
-  />
+    }}"/>
   {% endif %}
   <meta
     name="description"
@@ -117,49 +99,27 @@
   />
   <meta name="twitter:site" content="@{{ site.author.username }}" />
   <meta name="twitter:creator" content="@{{ site.author.username }}" />
-  <meta
-    name="twitter:description"
-    content="{{
+  <meta name="twitter:description" content="{{
       page.description
         | default: site.description
         | strip_html
         | normalize_whitespace
         | truncate: 200
         | escape
-    }}"
-  />
-  {% if page.image %}
-  <meta name="twitter:image" content="{{ page.image | absolute_url }}" />
-  {% else %}
-  <meta name="twitter:image" content="{{ site.image | absolute_url }}" />
-  {% endif %} {% feed_meta %}
-  <link
-    rel="apple-touch-icon"
-    sizes="180x180"
-    href="/assets/favicons/apple-touch-icon.png"
-  />
-  <link
-    rel="icon"
-    type="image/png"
-    sizes="32x32"
-    href="/assets/favicons/favicon-32x32.png"
-  />
-  <link
-    rel="icon"
-    type="image/png"
-    sizes="16x16"
-    href="/assets/favicons/favicon-16x16.png"
-  />
-  <link rel="manifest" href="/assets/favicons/site.webmanifest" />
-  <link
-    rel="mask-icon"
-    href="/assets/favicons/safari-pinned-tab.svg"
-    color="#5bbad5"
-  />
-  <meta name="apple-mobile-web-app-title" content="Mahendrata" />
-  <meta name="application-name" content="Mahendrata" />
-  <meta name="msapplication-TileColor" content="#da532c" />
-  <meta name="theme-color" content="#2c2c2c" />
-
-  <link rel="stylesheet" href="/assets/css/style.css" />
+    }}"/>
+{% if page.image %}
+<meta name="twitter:image" content="{{ page.image | absolute_url }}" />
+{% else %}
+<meta name="twitter:image" content="{{ site.image | absolute_url }}" />
+{% endif %} {% feed_meta %}
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png" />
+<link rel="manifest" href="/assets/favicons/site.webmanifest" />
+<link rel="mask-icon" href="/assets/favicons/safari-pinned-tab.svg" color="#5bbad5" />
+<meta name="apple-mobile-web-app-title" content="Mahendrata" />
+<meta name="application-name" content="Mahendrata" />
+<meta name="msapplication-TileColor" content="#da532c" />
+<meta name="theme-color" content="#2c2c2c" />
+<link rel="stylesheet" href="/assets/css/style.css" />
 </head>
