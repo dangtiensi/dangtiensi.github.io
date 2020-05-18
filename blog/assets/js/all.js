@@ -1,3 +1,4 @@
+#copyright @ siblog.net
 const siben = new Object();
 siben.domain = () =>
 {
