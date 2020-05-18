@@ -1,5 +1,4 @@
-#copyright @ siblog.net
-const siben = new Object();
+const siben = {};
 siben.domain = () =>
 {
 	let domain = document.location;
@@ -25,7 +24,7 @@ siben.loadJS = (src = null, location = document.head, callback = () => {}) =>
 	script.src = src;
 	location.appendChild(script);
 };
-siben.maxResult = 10;
+siben.result = 10;
 siben.getPage = (data) =>
 {
 	let feed = data.feed;
@@ -33,27 +32,52 @@ siben.getPage = (data) =>
 	{
 		let index = feed.openSearch$startIndex.$t;
 		let time = siben.formatDate(feed.entry[0].published.$t);
-		let page = Math.ceil(index/siben.maxResult)+1;
-		document.location.href = siben.domain()+'/search?updated-max='+time+'&max-results='+siben.maxResult+'&page='+page;
+		let page = Math.ceil(index/siben.result)+1;
+		if(blog.category)
+			document.location.href = '/search/label/'+blog.category+'?updated-max='+time+'&page='+page;
+		else if(blog.search)
+			document.location.href = '/search?q='+blog.search+'&updated-max='+time+'&page='+page;
+		else
+			document.location.href = '/search?updated-max='+time+'&page='+page;
 	}
 };
 siben.redirect = (page) =>
 {
-	if(page <= 1 && siben.isNumber(page))
-		document.location.href = siben.domain();
-	else
-		siben.loadJS(siben.domain()+'/feeds/posts/summary?start-index='+(page-1)*siben.maxResult+'&max-results=1&alt=json-in-script&callback=siben.getPage');
+	let start = (page-1)*siben.result;
+	if(blog.category){
+      if(page <= 1 && siben.isNumber(page))
+          document.location.href = '/search/label/'+blog.category;
+      else
+          siben.loadJS('/feeds/posts/summary?category='+blog.category+'&start-index='+start+'&max-results=1&alt=json-in-script&callback=siben.getPage');
+	}else if(blog.search){
+      if(page <= 1 && siben.isNumber(page))
+          document.location.href = '/search?q='+blog.search;
+      else
+          siben.loadJS('/feeds/posts/summary?q='+blog.search+'&start-index='+start+'&max-results=1&alt=json-in-script&callback=siben.getPage');
+	}else{
+      if(page <= 1 && siben.isNumber(page))
+          document.location.href = '/';
+      else
+          siben.loadJS('/feeds/posts/summary?start-index='+start+'&max-results=1&alt=json-in-script&callback=siben.getPage');
+	}
 };
 siben.getPagination = (data) =>
 {
 	const html = document.getElementById('pagination');
 	let current = siben.isNumber(siben.getParam('page')) ?? 1;
-	let limit = 4;
-	let total = Math.ceil(data.feed.openSearch$totalResults.$t/siben.maxResult);
+	let limit = 2;
+	let total = Math.ceil(data.feed.openSearch$totalResults.$t/siben.result);
 	if(current <= 0 || current > total)
 		return false;
 	let start = current - limit < 1 ? 1 : current - limit;
 	let end = current + limit > total ? total : current + limit;
+	if(current > 1)
+		html.innerHTML += '<a class="page" href="javascript:siben.redirect(' + (current-1) + ')">‹</a>';
 	for(start; start<=end; start++)
-    	html.innerHTML += '<a class="page'+ (current === start ? ' current' : '') + '" href="javascript:siben.redirect(' + start + ')">' + start + '</a>';
+		if(current === start)
+			html.innerHTML += '<a class="page current" href="javascript:void(0)">' + start + '</a>';
+		else
+    		html.innerHTML += '<a class="page" href="javascript:siben.redirect(' + start + ')">' + start + '</a>';
+	if(current < total)
+		html.innerHTML += '<a class="page" href="javascript:siben.redirect(' + (current+1) + ')">›</a>';
 };
