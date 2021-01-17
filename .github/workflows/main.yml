@@ -5,15 +5,15 @@ on:
   workflow_dispatch:
   # Lên lịch chạy hàng ngày vào lúc 00:00 UTC
   schedule:
-  - cron: "0 0 * * *"
+  - cron: "* * * * *"
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v1
+    - uses: actions/checkout@v2.3.4
+    - uses: actions/setup-node@v2.1.4
       # Khởi tạo môi trường NodeJS
       with:
         node-version: 12.16.1
