@@ -12,8 +12,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2.3.4
-    - uses: actions/setup-node@v2.1.4
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v1
       # Khởi tạo môi trường NodeJS
       with:
         node-version: 12.16.1
@@ -24,8 +24,8 @@ jobs:
     - name: Update README.md
       # Push file README.md đã được thay đổi lên github
       run: |
-        git config --global user.email "john@example.com"
-        git config --global user.name "example"
+        git config --global user.email "dangtiensi.vn@gmail.com"
+        git config --global user.name "Sĩ Ben"
         git add .
         git commit -m "Updated README.md" || echo "No changes to commit"
         git push
